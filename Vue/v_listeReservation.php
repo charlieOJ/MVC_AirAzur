@@ -19,7 +19,7 @@
                 echo "<tr><td>".$uneReservation->numReservation."</td>";
                 echo "<td>".$uneReservation->nomClient."</td>";
                 echo "<td>".$uneReservation->numVol."</td>";
-                echo "<td><a href='../Controler/index.php?action=PDF&numReservation=".$uneReservation->numReservation." target='_blank'><img class='imgPDF' src='../Vue/images/pdf.png'/></a></td> </tr>";
+                echo "<td><a href='../Controler/index.php?action=PDF&numReservation=".$uneReservation->numReservation."' target='_blank'><img class='imgPDF' src='../Vue/images/pdf.png'/></a></td> </tr>";
             }
             ?>
        

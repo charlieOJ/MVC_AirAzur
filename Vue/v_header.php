@@ -9,6 +9,8 @@ and open the template in the editor.
         <meta charset="ISO-8859-1"/>
         <link rel="stylesheet" type="text/css" href="../Vue/style.css"/>
         <title>AIR ALLIANCE</title>
+        <script src="../Modele/js/jquery.js" type="text/javascript"></script>
+        <script src="../Modele/js/javascriptAirazur.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="bandeau">

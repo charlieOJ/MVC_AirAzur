@@ -1,4 +1,6 @@
 <?php
+
+/*
 if (isset($_POST['valider']) ){
     
 
@@ -7,7 +9,7 @@ if (isset($_POST['valider']) ){
             creationClient($_POST['nomClient'], $_POST['prenomClient'],  $_POST['mailClient'], $_POST['adresseClient'], $_POST['cpClient'], $_POST['villeClient'], $_POST['telephoneClient']);
             //requete incluant dans table reservation
             creationReservation($_SESSION['numVol'], $_POST['paiement'], $_POST['nbPlace']);
-        header("location:index.php?action=valideForm&numVol=".$_SESSION['numVol']."&nomClient=".$_POST['nomClient']."&prenomClient=".$_POST['prenomClient']);
+        header("location:index.php?action=validForm&numVol=".$_SESSION['numVol']."&nomClient=".$_POST['nomClient']."&prenomClient=".$_POST['prenomClient']);
     }
     else{
         header("Location:../Controler/index.php?action=formReservation&numVol=".$_SESSION['numVol']."");
@@ -21,9 +23,11 @@ if (isset($_POST['valider']) ){
 
     
 }
-else{
-    echo '<form method="POST" action="index.php?action=formReservation&numVol='.$_SESSION['numVol'].'">';
- ?>
+else{*/
+    //echo '<form method="POST" action="index.php?action=formReservation&numVol='.$_SESSION['numVol'].'">';
+?>
+<div id="formReservation">
+
         <fieldset>
             <legend>Reservation pour le vol numero <?php echo $_SESSION['numVol']; ?></legend>
             <fieldset>
@@ -42,43 +46,45 @@ else{
             </fieldset>
             <fieldset>
                 <legend>Vos informations: </legend>
-                <input type='hidden' name='numVol' value='<?php $_SESSION['numVol'];?>'/>
+                <input type='hidden' id='numVol' value='<?php echo $_SESSION['numVol'];?>'/>
 
                 <label>Nom: </label>
-                    <input name="nomClient" type="text" />
+                    <input name="nomClient" type="text" id="nomClient" />
                 </br>
                 <label>Prénom: </label>
-                    <input name="prenomClient" type="text" />
+                    <input name="prenomClient" type="text" id="prenomClient"/>
                 </br>
                 <label>Mail: </label>
-                    <input name="mailClient" type="mail" />
+                    <input name="mailClient" type="mail" id="mailClient"/>
                 </br>
                 <label>Adresse: </label>
-                    <input name="adresseClient" type="text" />
+                    <input name="adresseClient" type="text" id="adresseClient"/>
                 </br>
                 <label>Code Postal: </label>
-                    <input name="cpClient" type="text" />
+                    <input name="cpClient" type="text" id="cpClient"/>
                 </br>
                 <label>Ville: </label>
-                    <input name="villeClient" type="text" />
+                    <input name="villeClient" type="text" id="villeClient"/>
                 </br>
                 <label>Téléphone: </label>
-                    <input name="telephoneClient" type="text" />
+                    <input name="telephoneClient" type="text" id="telephoneClient"/>
                 </br>
                 <label>Nombre de places:</label>
-                <input type='text' name='nbPlace'/>
+                <input type='text' name='nbPlace'id="nbPlace"/>
                 </br>
                 <label> Moyen de paiement: </label>
                 </br> 
-                    <input type="radio" name="paiement" value="CB"/><label>Carte Bleu</label></br>
-                    <input type="radio" name="paiement" value="Paypal"/><label>Paypal</label></br>
-                    <input type="radio" name="paiement" value="Cheque"/><label>Cheques</label>
+                    <input type="radio" name="paiement" id="paiement" value="CB"/><label>Carte Bleu</label></br>
+                    <input type="radio" name="paiement" id="paiement" value="Paypal"/><label>Paypal</label></br>
+                    <input type="radio" name="paiement" id="paiement" value="Cheque"/><label>Cheques</label>
                     </br>
 
             </fieldset>
-            <input type="submit" name="valider" value="Valider"/><input type="reset" name="annuler" value="Annuler"/>
+            <input type="submit" id="validerForm"/><input type="reset" name="annuler" value="Annuler"/>
         </fieldset>
-    </form>
+
+    </div>
+
 <?php
-}
+//}
 ?>

@@ -1,9 +1,10 @@
 <div id='contenu'>
+    
 <?php 
 session_start();
     
    
-    include '../Vue/v_header.php';
+    include ('../Vue/v_header.php');
     if(!isset ($_REQUEST['action'])){
         $action='accueil';
     }
@@ -15,7 +16,7 @@ session_start();
             include ('../Vue/v_accueil.php');
             break;
         case 'voirVols':
-            require  '../Modele/fonctions.php';
+            require  ('../Modele/fonctions.php');
             $lesVols=getLesVols();
             include ('../Vue/v_vols.php');
             break;
@@ -24,18 +25,20 @@ session_start();
             require  ('../Modele/fonctions.php');
             $lesVols=getLesVols();
             include ('../Vue/v_formReservation.php');
+            session_destroy();
             break ;
-        case 'valideForm':
+        /*case 'validForm':
             $_SESSION['numVol']=$_REQUEST['numVol'];
             $_SESSION['nomClient']=$_REQUEST['nomClient'];
             $_SESSION['prenomClient']=$_REQUEST['prenomClient'];
-            include ('../Vue/v_validForm.php');
-            break;
+            include ('../Vue/v_validForm.php'); 
+          
+            break;*/
         case 'reservation':
             require  ('../Modele/fonctions.php');
             $lesReservations=getLesReservations();
             include ('../Vue/v_listeReservation.php');
-            session_destroy();
+          
             break;
         case 'PDF':
             $numReservation=$_REQUEST['numReservation'];
@@ -43,7 +46,7 @@ session_start();
             break ;
     }
    
-        include '../Vue/v_footer.php';
+        include ('../Vue/v_footer.php');
 
 ?>
 </div>

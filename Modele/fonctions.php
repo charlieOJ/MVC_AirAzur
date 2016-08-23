@@ -63,6 +63,46 @@ function getLesReservations(){
 
     return $reservations;
 }
+function getInfoReservation($numReservation){
+    
+    $bdd=connect();
+    // Déclaration d?un tableau
+    $reservation = array();  
+    // Requete de selction des vols
+    try{
+        $requete="select reservation.idReservation as numReservation,
+                reservation.idClient as idClient,
+                reservation.paiement as paiement,
+                reservation.nbPlace as nbPlace,
+                client.nomClient as nomClient,
+                client.prenomClient as prenomClient,
+                client.mailClient as mailClient,
+                client.adresseClient as adresseClient,
+                client.cpClient as cpClient,
+                client.villeClient as villeClient,
+                client.telephoneClient as telephoneClient,
+                vols.numVol as numVol,
+                vols.aeroportDepart as aeroportDepart,
+                vols.aeroportArrivee as aeroportArrivee,
+                vols.dateDepart as dateDepart,
+                vols.dateArrivee as dateArrivee,
+                vols.prix as prix
+                from vols, reservation, client
+                where client.idClient=reservation.idClient
+                and vols.numVol=reservation.numVol
+                and reservation.idReservation=".$numReservation."";
+        
+        $resultat=$bdd->query($requete);
+        while($ligne=$resultat->fetch(PDO::FETCH_OBJ)){
+                $reservation[]=$ligne;
+        }
+    }
+    catch(PDOException $e){
+            echo "erreur dans la requete " .$e->getMessage();
+    }
+
+    return $reservation;
+}
 
 
 
@@ -88,7 +128,7 @@ function creationClient($nomClient, $prenomClient,  $mailClient, $adresseClient,
 }
 
 function creationReservation($numVol, $paiement, $nbPlace){
-        $_SESSION['numVol']=$numVol;
+       $_SESSION['numVol']=$numVol;
         $_SESSION['paiement']=$paiement;
         $_SESSION['nbPlace']=$nbPlace;
         

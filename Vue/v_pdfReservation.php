@@ -1,28 +1,27 @@
 <?php
 require  '../Modele/fonctions.php';
-            $lesReservations=getLesReservations();
-            $numReservation=$_REQUEST['numReservation'];
-            foreach($lesReservations as $uneReservation){
-                if($uneReservation->numReservation==$numReservation){
-                    $numReservation=$uneReservation->numReservation;
-                    $idClient=$uneReservation->idClient;
-                    $paiement=$uneReservation->paiement;
-                    $nbPlace=$uneReservation->nbPlace;
-                    $nomClient=$uneReservation->nomClient;
-                    $prenomClient=$uneReservation->prenomClient;
-                    $mailClient=$uneReservation->mailClient;
-                    $adresseClient=$uneReservation->adresseClient;
-                    $cpClient=$uneReservation->cpClient;
-                    $villeClient=$uneReservation->villeClient;
-                    $telephoneClient=$uneReservation->telephoneClient;
-                    $numVol=$uneReservation->numVol;
-                    $aeroportDepart=$uneReservation->aeroportDepart;
-                    $aeroportArrivee=$uneReservation->aeroportArrivee;
-                    $dateDepart=$uneReservation->dateDepart;
-                    $dateArrivee=$uneReservation->dateArrivee;
-                    $prix=$uneReservation->prix;
-                }
-            }
+$numReservation=$_REQUEST['numReservation'];
+$lesInfoReservation=getInfoReservation($numReservation);
+            
+    foreach($lesInfoReservation as $uneInfoReservation){
+        $numReservation=$uneInfoReservation->numReservation;
+        $idClient=$uneInfoReservation->idClient;
+        $paiement=$uneInfoReservation->paiement;
+        $nbPlace=$uneInfoReservation->nbPlace;
+        $nomClient=$uneInfoReservation->nomClient;
+        $prenomClient=$uneInfoReservation->prenomClient;
+        $mailClient=$uneInfoReservation->mailClient;
+        $adresseClient=$uneInfoReservation->adresseClient;
+        $cpClient=$uneInfoReservation->cpClient;
+        $villeClient=$uneInfoReservation->villeClient;
+        $telephoneClient=$uneInfoReservation->telephoneClient;
+        $numVol=$uneInfoReservation->numVol;
+        $aeroportDepart=$uneInfoReservation->aeroportDepart;
+        $aeroportArrivee=$uneInfoReservation->aeroportArrivee;
+        $dateDepart=$uneInfoReservation->dateDepart;
+        $dateArrivee=$uneInfoReservation->dateArrivee;
+        $prix=$uneInfoReservation->prix;
+    }
 // permet d'inclure la bibliothèque fpdf
 require('../Modele/fpdf/fpdf.php');
 
